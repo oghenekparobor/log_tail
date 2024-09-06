@@ -1,0 +1,19 @@
+name: log_tail
+description: This package sends app logs to Betterstack's log tail
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.5.0
+  flutter: ^3.24.0
+
+dependencies:
+  dio: ^5.7.0
+  flutter:
+    sdk: flutter
+  logger: ^2.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.4
+  very_good_analysis: ^6.0.0
