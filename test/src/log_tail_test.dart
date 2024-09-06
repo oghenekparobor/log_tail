@@ -45,6 +45,8 @@ void main() {
       // Arrange
       const response = 'The event(s) were successfully logged';
 
+      when(() => logger.d('event')).thenReturn(null);
+
       when(() => client.sendMultipleEvents(['events'])).thenAnswer(
         (_) async => response,
       );

@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:log_tail/src/client/log_tail.client.dart';
 import 'package:log_tail/src/log_tail.type.dart';
 import 'package:logger/logger.dart';
@@ -16,8 +17,23 @@ class LogTail {
   /// The [_sourceToken] is used for authenticating requests
   /// to the LogTail server.
   LogTail(this._sourceToken, {LogTailClient? client}) {
-    _client = client ?? LogTailClient(_sourceToken);
+    _client = client ??
+        LogTailClient(
+          _sourceToken,
+          dio: Dio(
+            BaseOptions(
+              baseUrl: kBaseUrl,
+              persistentConnection: true,
+              preserveHeaderCase: true,
+              headers: {
+                'Authorization': 'Bearer $_sourceToken',
+              },
+            ),
+          ),
+        );
   }
+
+  static const kBaseUrl = 'https://in.logs.betterstack.com';
 
   /// The source token used for authenticating with the LogTail server.
   final String _sourceToken;
