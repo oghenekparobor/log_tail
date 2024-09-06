@@ -2,3 +2,4 @@
 library;
 
 export 'src/log_tail.dart';
+export 'src/log_tail.type.dart';

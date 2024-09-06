@@ -4,13 +4,26 @@
 [![Powered by Mason](https://img.shields.io/endpoint?url=https%3A%2F%2Ftinyurl.com%2Fmason-badge)](https://github.com/felangel/mason)
 [![License: MIT][license_badge]][license_link]
 
-This package sends app logs to Betterstack's log tail
+An unofficial Flutter package for sends app logs to Betterstack's log tail integrating with Better Stack APIs. 
+This package provides a convenient way to send logs to Better Stack's log tail service from your Flutter application.
+
+## Disclaimer
+
+This package is **unofficial** and is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Better Stack, or any of its subsidiaries or affiliates. The official Better Stack website can be found at [betterstack.com](https://betterstack.com).
+
+All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.
+
+## Features
+
+- Easy integration with Better Stack APIs.
+- Simple and intuitive methods for sending logs.
+- Handles authentication and API requests seamlessly.
 
 ## Installation 💻
 
 **❗ In order to start using Log Tail you must have the [Flutter SDK][flutter_install_link] installed on your machine.**
 
-Install via `flutter pub add`:
+Install via `flutter pub add log_tail`:
 
 ```sh
 dart pub add log_tail

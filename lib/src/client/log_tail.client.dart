@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:log_tail/src/exception/tail.exception.dart';
+import 'package:logger/logger.dart';
 
 /// A client class responsible for sending
 /// log events to Betterstack's LogTail service.
@@ -42,7 +43,13 @@ class LogTailClient {
     required String event,
     Map<String, dynamic>? extra,
   }) async {
-    return _sendRequest(data: {'message': event, ...?extra});
+    return _sendRequest(
+      data: {
+        'message': event,
+        ...?extra,
+        'dt': DateTime.now().toIso8601String(),
+      },
+    );
   }
 
   /// Sends multiple log [events] to the LogTail server.
@@ -51,7 +58,14 @@ class LogTailClient {
   /// Returns a [Future] that resolves to a [String]
   /// indicating the result of the log operation.
   Future<String?> sendMultipleEvents(List<String> events) async {
-    final messages = events.map((event) => {'message': event}).toList();
+    final messages = events
+        .map(
+          (event) => {
+            'message': event,
+            'dt': DateTime.now().toIso8601String(),
+          },
+        )
+        .toList();
 
     return _sendRequest(data: messages);
   }
@@ -65,9 +79,12 @@ class LogTailClient {
   /// it calls [_handleError] to handle errors.
   Future<String?> _sendRequest({required dynamic data}) async {
     try {
-      final response = await dio.post<Map<String, dynamic>>('', data: data);
+      final response = await dio.post<Map<String, dynamic>>(
+        '',
+        data: data,
+      );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 202) {
         return 'The event(s) were successfully logged';
       } else {
         return _handleError(response);

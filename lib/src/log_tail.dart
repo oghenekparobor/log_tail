@@ -10,19 +10,19 @@ import 'package:logger/logger.dart';
 class LogTail {
   /// {@macro log_tail}
   ///
-  /// Creates an instance of [LogTail] with the given [sourceToken].
+  /// Creates an instance of [LogTail] with the given [_sourceToken].
   ///
-  /// The [sourceToken] is used for authenticating requests
+  /// The [_sourceToken] is used for authenticating requests
   /// to the LogTail server.
-  LogTail(this.sourceToken, {LogTailClient? client}) {
-    this.client = client ?? LogTailClient(sourceToken);
+  LogTail(this._sourceToken, {LogTailClient? client}) {
+    _client = client ?? LogTailClient(_sourceToken);
   }
 
   /// The source token used for authenticating with the LogTail server.
-  final String sourceToken;
+  final String _sourceToken;
 
   /// The client used to send log events to the LogTail server.
-  late final LogTailClient client;
+  late final LogTailClient _client;
 
   /// Logs a single [event] to the console and/or the LogTail server.
   ///
@@ -37,12 +37,12 @@ class LogTail {
   Future<String?> logEvent(
     String event, {
     Map<String, dynamic>? extra,
-    LogTailType type = LogTailType.both,
+    LogTailType type = LogTailType.serverOnly,
   }) async {
     _logToConsole(event, type); // Log to console if needed
 
     if (type != LogTailType.consoleOnly) {
-      return client.sendSingleEvent(event: event, extra: extra);
+      return _client.sendSingleEvent(event: event, extra: extra);
     }
     return null;
   }
@@ -58,12 +58,12 @@ class LogTail {
   /// operation, or `null` if only logging to the console.
   Future<String?> logEvents(
     List<String> events, {
-    LogTailType type = LogTailType.both,
+    LogTailType type = LogTailType.serverOnly,
   }) async {
     _logToConsole(events, type); // Log to console if needed
 
     if (type != LogTailType.consoleOnly) {
-      return client.sendMultipleEvents(events);
+      return _client.sendMultipleEvents(events);
     }
     return null;
   }
