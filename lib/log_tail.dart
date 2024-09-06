@@ -1,4 +1,4 @@
-/// This package sends app logs to Betterstack's log tail
+/// This package sends app logs to Better stack's log tail
 library;
 
 export 'src/log_tail.dart';

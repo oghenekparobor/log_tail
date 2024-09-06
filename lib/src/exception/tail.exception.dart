@@ -1,6 +1,6 @@
 /// A custom exception class for handling errors related to LogTail operations.
 ///
-/// This class implements the [Exception] interface 
+/// This class implements the [Exception] interface
 /// and provides specific error messages
 /// based on the HTTP status code returned by the LogTail server.
 class LogTailException implements Exception {
