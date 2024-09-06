@@ -1,9 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:log_tail/src/exception/tail.exception.dart';
-import 'package:logger/logger.dart';
 
 /// A client class responsible for sending
-/// log events to Betterstack's LogTail service.
+/// log events to Better stack's LogTail service.
 class LogTailClient {
   /// Creates an instance of [LogTailClient] with the provided [sourceToken].
   ///

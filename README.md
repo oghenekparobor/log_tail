@@ -4,7 +4,7 @@
 [![Powered by Mason](https://img.shields.io/endpoint?url=https%3A%2F%2Ftinyurl.com%2Fmason-badge)](https://github.com/felangel/mason)
 [![License: MIT][license_badge]][license_link]
 
-An unofficial Flutter package for sends app logs to Betterstack's log tail integrating with Better Stack APIs. 
+An unofficial Flutter package for sends app logs to Better stack's log tail integrating with Better Stack APIs. 
 This package provides a convenient way to send logs to Better Stack's log tail service from your Flutter application.
 
 ## Disclaimer
