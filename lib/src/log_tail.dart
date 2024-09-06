@@ -3,7 +3,7 @@ import 'package:log_tail/src/log_tail.type.dart';
 import 'package:logger/logger.dart';
 
 /// {@template log_tail}
-/// A utility class to send logs to Bette rstack's LogTail 
+/// A utility class to send logs to Bette rstack's LogTail
 /// service and optionally
 /// log to the console. This class provides methods to log single or multiple
 /// events, either to the server, the console, or both.
