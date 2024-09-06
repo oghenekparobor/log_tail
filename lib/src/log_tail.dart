@@ -12,10 +12,10 @@ class LogTail {
   ///
   /// Creates an instance of [LogTail] with the given [sourceToken].
   ///
-  /// The [sourceToken] is used for authenticating requests 
+  /// The [sourceToken] is used for authenticating requests
   /// to the LogTail server.
-  LogTail(this.sourceToken) {
-    client = LogTailClient(sourceToken);
+  LogTail(this.sourceToken, {LogTailClient? client}) {
+    this.client = client ?? LogTailClient(sourceToken);
   }
 
   /// The source token used for authenticating with the LogTail server.
@@ -31,7 +31,7 @@ class LogTail {
   /// The [type] parameter determines whether the event should be logged to the
   /// server, the console, or both. Defaults to [LogTailType.both].
   ///
-  /// Returns a [Future] that resolves to a [String] indicating 
+  /// Returns a [Future] that resolves to a [String] indicating
   /// the result of the log
   /// operation, or `null` if only logging to the console.
   Future<String?> logEvent(
@@ -53,7 +53,7 @@ class LogTail {
   /// The [type] parameter determines whether the events should be logged to the
   /// server, the console, or both. Defaults to [LogTailType.both].
   ///
-  /// Returns a [Future] that resolves to a [String] indicating 
+  /// Returns a [Future] that resolves to a [String] indicating
   /// the result of the log
   /// operation, or `null` if only logging to the console.
   Future<String?> logEvents(
@@ -71,7 +71,7 @@ class LogTail {
   /// Logs a [message] to the console if the [type] is [LogTailType.both] or
   /// [LogTailType.consoleOnly].
   ///
-  /// This method uses the `Logger` package to output the 
+  /// This method uses the `Logger` package to output the
   /// message to the console.
   /// It is used internally by [logEvent] and [logEvents] methods.
   void _logToConsole(dynamic message, LogTailType type) {

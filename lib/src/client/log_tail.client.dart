@@ -9,17 +9,18 @@ class LogTailClient {
   /// The [sourceToken] is used for authenticating
   /// requests to the LogTail server.
   /// Initializes the Dio HTTP client with necessary configurations.
-  LogTailClient(this.sourceToken) {
-    dio = Dio(
-      BaseOptions(
-        baseUrl: kBaseUrl,
-        persistentConnection: true,
-        preserveHeaderCase: true,
-        headers: {
-          'Authorization': 'Bearer $sourceToken',
-        },
-      ),
-    );
+  LogTailClient(this.sourceToken, {Dio? dio}) {
+    this.dio = dio ??
+        Dio(
+          BaseOptions(
+            baseUrl: kBaseUrl,
+            persistentConnection: true,
+            preserveHeaderCase: true,
+            headers: {
+              'Authorization': 'Bearer $sourceToken',
+            },
+          ),
+        );
   }
 
   /// Base URL for the LogTail service API.
