@@ -83,9 +83,6 @@ class LogTailClient {
   /// which is the HTTP response received from the server,
   /// and returns the error message from the [LogTailException].
   String? _handleError(Response<dynamic> response) {
-    return LogTailException(
-      response.statusCode ?? 400,
-      request: response.extra,
-    ).message;
+    return LogTailException(response.statusCode ?? 400).message;
   }
 }
